@@ -1,5 +1,5 @@
-__all__ = ('Base', 'DatabaseHelper', 'db_halper', 'Chat', )
+__all__ = ('Base', 'Chat', 'User', )
 
 from .base import Base
-from .db_helper import DatabaseHelper, db_halper
 from .chat import Chat
+from .user import User
