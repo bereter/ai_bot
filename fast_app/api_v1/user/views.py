@@ -10,13 +10,6 @@ from .shemas import User, UserCreate
 router = APIRouter(tags=['User'])
 
 
-@router.post('/', response_model=User, status_code=status.HTTP_201_CREATED)
-async def post_user(
-        session: Annotated[AsyncSession, Depends(db_halper.session_getter)],
-        user_in: Annotated[UserCreate, Depends()]):
-    return await crud.create_user(session=session, user_create=user_in)
-
-
 @router.get('/{id_user}/', response_model=User)
 async def get_user(
         id_user: int,
@@ -28,3 +21,27 @@ async def get_user(
     raise HTTPException(
         status_code=status.HTTP_404_NOT_FOUND,
     )
+
+
+@router.post('/{user_email}/', response_model=User)
+async def get_user(
+        password: str,
+        user_email: str,
+        session: Annotated[AsyncSession, Depends(db_halper.session_getter)]):
+    user = await crud.get_user_by_email(user_email=user_email, password=password, session=session)
+    if user:
+        return user
+
+    raise HTTPException(
+        status_code=status.HTTP_404_NOT_FOUND,
+    )
+
+
+@router.post('/', response_model=User, status_code=status.HTTP_201_CREATED)
+async def post_user(
+        session: Annotated[AsyncSession, Depends(db_halper.session_getter)],
+        user_in: Annotated[UserCreate, Depends()]):
+    return await crud.create_user(session=session, user_create=user_in)
+
+
+
