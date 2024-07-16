@@ -17,5 +17,8 @@ class Chat(Base):
     message_ai: Mapped[str]
     datetime: Mapped[DateTime] = mapped_column(TIMESTAMP, default=datetime.utcnow)
 
-    user_id: Mapped[int] = mapped_column(ForeignKey('user.id'))
+    user_id: Mapped[int] = mapped_column(ForeignKey('user.id', ondelete='CASCADE'))
     user: Mapped['User'] = relationship(back_populates='chats')
+
+    def __repr__(self):
+        return f'Chat id: {self.id}, User: {self.user_id}'

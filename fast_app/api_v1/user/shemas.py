@@ -13,9 +13,14 @@ class UserCreate(UserBase):
     password: str
 
 
+class UserList(UserBase):
+    id: int
+    datetime: datetime
+    chats: list[Chat] = []
+
+
 class User(UserBase):
     model_config = ConfigDict(from_attributes=True)
     id: int
     datetime: datetime
-    # chats: list[Chat] = []
 

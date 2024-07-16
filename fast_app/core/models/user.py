@@ -20,3 +20,5 @@ class User(Base):
     chats: Mapped[list['Chat']] = relationship(back_populates='user')
 
 
+    def __repr__(self):
+        return f'User: {self.username}, id: {self.id}'
