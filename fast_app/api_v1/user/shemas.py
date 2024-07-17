@@ -1,4 +1,3 @@
-from typing import Annotated
 from pydantic import BaseModel, EmailStr, ConfigDict
 from datetime import datetime
 from api_v1.chats.shemas import Chat

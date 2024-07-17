@@ -39,7 +39,7 @@ async def get_user_chats(session: AsyncSession, id_user: int, limit: int, offset
         .filter_by(id=id_user)
         .outerjoin(Chat, Chat.id.in_(subq))
         .options(contains_eager(User.chats))
-        )
+    )
     result: Result = await session.execute(stmt)
     user_chats = result.unique().scalars().one_or_none()
     return user_chats

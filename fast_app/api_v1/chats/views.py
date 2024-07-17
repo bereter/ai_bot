@@ -9,11 +9,6 @@ from .shemas import Chat, ChatCreate
 router = APIRouter(tags=['Chats'])
 
 
-# @router.get('/', response_model=list[Chat])
-# async def get_chats(session: Annotated[AsyncSession, Depends(db_halper.session_getter)]):
-#     return await crud.get_chats(session=session)
-
-
 @router.get('/{id_chat}/', response_model=Chat)
 async def get_chat(
         session: Annotated[AsyncSession, Depends(db_halper.session_getter)],

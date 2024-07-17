@@ -35,9 +35,7 @@ async def get_user(
     if user:
         return user
 
-    raise HTTPException(
-        status_code=status.HTTP_404_NOT_FOUND,
-    )
+    raise HTTPException(status_code=status.HTTP_404_NOT_FOUND)
 
 
 @router.post('/', response_model=User, status_code=status.HTTP_201_CREATED)
