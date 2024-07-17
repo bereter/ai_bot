@@ -39,7 +39,7 @@ async def get_user(
 
 
 @router.post('/', response_model=User, status_code=status.HTTP_201_CREATED)
-async def post_user(
+async def create_user(
         session: Annotated[AsyncSession, Depends(db_halper.session_getter)],
         user_in: Annotated[UserCreate, Depends()]):
     return await crud.create_user(session=session, user_create=user_in)
