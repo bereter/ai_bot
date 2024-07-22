@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="93cfd71a-75b8-4348-9118-6018a258ca76" name="Changes" comment="api_v1: Добавил взаимодействие с gigachat, и немного поправил код в некоторых файлах">
+    <list default="true" id="93cfd71a-75b8-4348-9118-6018a258ca76" name="Changes" comment="api_v1: Изменил роутеры">
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fast_app/api_v1/chats/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/fast_app/api_v1/chats/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fast_app/api_v1/user/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/fast_app/api_v1/user/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -161,7 +160,15 @@
       <option name="project" value="LOCAL" />
       <updated>1721206704162</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="api_v1: Изменил роутеры">
+      <option name="closed" value="true" />
+      <created>1721242902673</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1721242902673</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -194,6 +201,7 @@
     <MESSAGE value="api_v1: Добавил поиск пользователя по email" />
     <MESSAGE value="api_v1: Добавил корректное отображение чатов пользователя и пагинацию" />
     <MESSAGE value="api_v1: Добавил взаимодействие с gigachat, и немного поправил код в некоторых файлах" />
-    <option name="LAST_COMMIT_MESSAGE" value="api_v1: Добавил взаимодействие с gigachat, и немного поправил код в некоторых файлах" />
+    <MESSAGE value="api_v1: Изменил роутеры" />
+    <option name="LAST_COMMIT_MESSAGE" value="api_v1: Изменил роутеры" />
   </component>
 </project>
