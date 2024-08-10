@@ -8,10 +8,6 @@ class UserBase(BaseModel):
     user_email: EmailStr
 
 
-class UserCreate(UserBase):
-    password: str
-
-
 class UserList(UserBase):
     id: int
     datetime: datetime

@@ -1,10 +1,9 @@
 from fastapi import APIRouter
 
-from .chats.views import router as chats_router
-from .user.views import router as user_router
+from api_v1.views import router_user, router_chats
 
 router = APIRouter()
 
-router.include_router(router=chats_router, prefix='/chats')
-router.include_router(router=user_router, prefix='/user')
+router.include_router(router=router_chats, prefix='/chat')
+router.include_router(router=router_user, prefix='/account')
 
