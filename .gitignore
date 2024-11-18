@@ -2,3 +2,4 @@
 .env
 command_help
 /fast_app/certs/
+.idea
