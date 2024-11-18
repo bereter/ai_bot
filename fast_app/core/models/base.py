@@ -2,6 +2,7 @@ from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 from sqlalchemy import BigInteger, Identity
 
 
+
 class Base(DeclarativeBase):
     __abstract__ = True
 

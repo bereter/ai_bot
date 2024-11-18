@@ -15,7 +15,8 @@ class User(Base):
     username: Mapped[str]
     password: Mapped[str]
     user_email: Mapped[str] = mapped_column(unique=True)
-    datetime: Mapped[DateTime] = mapped_column(TIMESTAMP, default=datetime.utcnow)
+    datetime: Mapped[DateTime] = mapped_column(TIMESTAMP, default=datetime.now())
+    verification_email: Mapped[bool] = mapped_column(default=False)
 
     chats: Mapped[list['Chat']] = relationship(back_populates='user')
 

@@ -26,6 +26,7 @@ async def verify_password_hash(password, verify_password):
 async def create_access_token(user):
     try:
         payload = {
+            'id': user.id,
             'username': user.username,
             'user_email': user.user_email,
 
@@ -44,4 +45,3 @@ async def verify_token(token):
     except Exception as ex:
         print(str(ex))
         raise ex
-

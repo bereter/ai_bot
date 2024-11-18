@@ -3,7 +3,6 @@ from sqlalchemy.engine import Result
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 from core.models import User, Chat
-from .shemas import UserCreate
 from sqlalchemy.orm import selectinload, contains_eager
 from email.message import EmailMessage
 from os import getenv
@@ -35,10 +34,10 @@ async def create_user(session: AsyncSession, username: str, user_email: str, pas
 
 
 # получение чатов пользователя
-async def get_user_chats(session: AsyncSession, id_user: int, limit: int, offset: int) -> User | None:
+async def get_user_chats(session: AsyncSession, id_user: int, themes: str, limit: int, offset: int) -> User | None:
     subq = (
         select(Chat.id)
-        .filter(Chat.user_id == User.id)
+        .filter(Chat.user_id == User.id, Chat.themes == themes)
         .order_by(Chat.datetime.desc())
         .limit(limit)
         .offset(offset)
@@ -56,6 +55,7 @@ async def get_user_chats(session: AsyncSession, id_user: int, limit: int, offset
     return user_chats
 
 
+# отправка сообщения пользователю для верификации
 async def send_verify(token: str, user_email: str) -> None:
 
     msg = EmailMessage()
@@ -65,7 +65,7 @@ async def send_verify(token: str, user_email: str) -> None:
     msg.set_content(
         f'''
         verify account
-        http://localhost:8000/user/verify/{token}
+        http://127.0.0.1:8000/api/v1/account/verify/{token}/
         ''',
     )
     with smtplib.SMTP_SSL('smtp.yandex.com', 465) as smtp:
@@ -73,3 +73,7 @@ async def send_verify(token: str, user_email: str) -> None:
         smtp.send_message(msg)
 
 
+# подтверждение почты пользователя
+async def user_email_veryfi(session: AsyncSession, user: User):
+    user.verification_email = True
+    await session.commit()
